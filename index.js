@@ -1,7 +1,9 @@
 const express = require('express');
 
 const userrouter = require('./routes/user')
-const { connectdb } = require('./connection')
+const { connectUserdb } = require('./conntection/user')
+const { connectsignupdb } = require('./conntection/signup')
+const signrouter = require('./routes/signup')
 
 const cors = require('cors');
 
@@ -9,7 +11,8 @@ const app = express();
 const PORT = 8000;
 
 //Connection of mongodb
-connectdb('mongodb://127.0.0.1:27017/First-project-backend').then(()=>console.log("MongoDB is connected"));
+connectUserdb('mongodb://127.0.0.1:27017/First-project-backend');
+connectsignupdb('mongodb://127.0.0.1:27017/SignUp');
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -23,7 +26,7 @@ app.use(cors({
 }));
 
 // Routes
-app.use( '/api/user',userrouter);
-
+app.use('/api/user', userrouter);
+app.use('/api/', signrouter)
 
 app.listen(PORT, () => console.log(`Server is started at PORT:${PORT}`));
