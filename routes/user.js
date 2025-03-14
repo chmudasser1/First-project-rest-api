@@ -1,4 +1,5 @@
 const express = require('express');
+const { restricToLoggedinUserOnly } = require('../middleware/auth')
 
 const router = express.Router();
 

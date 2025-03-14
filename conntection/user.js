@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-async function connectUserdb(url) {
-    return mongoose.connect(url);
+async function connectUserdb(uri) {
+    return mongoose.connect(uri);
 }
 
 module.exports = {
