@@ -30,6 +30,7 @@ async function handlePostsignip(req, res) {
 }
 
 async function handleLogin(req, res) {
+    // console.log(req.cookies);
     const { Email, Password } = req.body;
 
     // Validate the request body

@@ -1,16 +1,16 @@
 const { getUser } = require("../service/auth")
 
 async function restricToLoggedinUserOnly(req, res, next) {
-    const userid = req.cookies?.uid;
+    const authorization = req.headers['authorization'];
 
-    console.log('Cookie (uid):', userid); // Debugging
+    // console.log('Cookie (uid):', userid); // Debugging
 
-    if (!userid) {
+    if (!authorization) {
         console.log('No userid found in cookies'); // Debugging
         return res.status(401).json({ message: "No User" });
     }
-
-    const user = getUser(userid);
+    const token = authorization.split(' ')[1];
+    const user = getUser(token);
     console.log('User from session map:', user); // Debugging
 
     if (!user) {

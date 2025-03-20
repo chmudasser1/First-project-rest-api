@@ -1,6 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const { restricToLoggedinUserOnly } = require('./middleware/auth')
+const { restricToLoggedinUserOnly, } = require('./middleware/auth')
 const userrouter = require('./routes/user')
 const { connectUserdb } = require('./conntection/user')
 // const { connectsignupdb } = require('./conntection/signup')
